@@ -2,9 +2,17 @@ import { mkdtempSync, mkdirSync, writeFileSync, rmSync } from "node:fs";
 import { after } from "node:test";
 import { tmpdir } from "node:os";
 import { join, dirname } from "node:path";
-export function fixture(t) {
+// Register at module scope: after() called inside a test attaches to that test,
+// which could delete its directory before later SQLite/server close hooks run.
+const homes = [];
+after(() => {
+  for (const home of homes) {
+    rmSync(home, { recursive: true, force: true, maxRetries: 5, retryDelay: 100 });
+  }
+});
+export function fixture() {
   const home = mkdtempSync(join(tmpdir(), "harness-chats-test-"));
-  after(() => rmSync(home, { recursive: true, force: true }));
+  homes.push(home);
   return home;
 }
 export function jsonl(home, path, rows) {
