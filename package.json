@@ -18,7 +18,7 @@
     "search": "node bin/chats.js search",
     "serve": "node bin/chats.js serve",
     "start": "node bin/chats.js serve",
-    "test": "node --test test/*.test.js",
+    "test": "node --test --test-timeout=30000 test/*.test.js",
     "test:browser": "node test/browser-smoke.mjs",
     "check": "node --check bin/chats.js && node --check src/cli.js && node --check src/importers.js && node --check src/store.js && node --check src/enrich.js && node --check src/web.js && node --check static/app.js"
   },
