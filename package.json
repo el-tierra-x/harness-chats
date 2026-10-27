@@ -1,0 +1,51 @@
+{
+  "name": "@el-tierra-x/harness-chats",
+  "version": "0.2.0",
+  "description": "Local-first chat indexing and search across Codex, Cursor, pi, and omp",
+  "type": "module",
+  "private": true,
+  "license": "MIT",
+  "engines": {
+    "node": ">=24.0.0"
+  },
+  "bin": {
+    "chats": "bin/chats.js",
+    "harness-chats": "bin/chats.js"
+  },
+  "scripts": {
+    "index": "node bin/chats.js index",
+    "update": "node bin/chats.js update",
+    "search": "node bin/chats.js search",
+    "serve": "node bin/chats.js serve",
+    "start": "node bin/chats.js serve",
+    "test": "node --test test/*.test.js",
+    "test:browser": "node test/browser-smoke.mjs",
+    "check": "node --check bin/chats.js && node --check src/cli.js && node --check src/importers.js && node --check src/store.js && node --check src/enrich.js && node --check src/web.js && node --check static/app.js"
+  },
+  "files": [
+    "bin/",
+    "src/",
+    "static/",
+    "examples/",
+    "README.md",
+    "LICENSE"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/el-tierra-x/harness-chats.git"
+  },
+  "bugs": {
+    "url": "https://github.com/el-tierra-x/harness-chats/issues"
+  },
+  "homepage": "https://github.com/el-tierra-x/harness-chats#readme",
+  "keywords": [
+    "codex",
+    "cursor",
+    "pi",
+    "omp",
+    "chat",
+    "cli",
+    "sqlite",
+    "local-first"
+  ]
+}
